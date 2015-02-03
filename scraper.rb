@@ -39,10 +39,11 @@ scrape_url = "http://infogob.com.pe/Localidad/ubigeo.aspx?IdUbigeo=010102&IdLoca
 d = District.new(scrape_url)
 d.getOfficials
 d.officials.each do |o|
-    data = {
-        name: o.name.to_s,
-        uri: o.uri.to_s
-    }
-    ScraperWiki::save_sqlite([], data)
+    #data = {
+    #    name: o.name.to_s,
+    #    uri: o.uri.to_s
+    #}
+    ScraperWiki.save_sqlite(["name"], {"name" => o.name.to_s, "uri" => o.uri.to_s})
+    #ScraperWiki::save_sqlite([], data)
 end
 
