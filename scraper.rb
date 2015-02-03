@@ -18,8 +18,6 @@ class District
             page.xpath('//table[@id="ctl00_ContentPlaceHolder1_cab_ubigeo1_gvAutUbigeo"]/tr/td[2]/a').each do |o|
                   official_name = o.inner_text
                   official_uri = o.attributes['href']
-                  puts official_name
-                  puts official_uri
                   @officials.push(Official.new(official_name,official_uri))
             end
           rescue
@@ -41,8 +39,6 @@ scrape_url = "http://infogob.com.pe/Localidad/ubigeo.aspx?IdUbigeo=010102&IdLoca
 d = District.new(scrape_url)
 d.getOfficials
 d.officials.each do |o|
-    puts o.name.to_s
-    puts o.uri.to_s
     data = {
         name: o.name.to_s,
         uri: o.uri.to_s
