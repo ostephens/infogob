@@ -44,7 +44,7 @@ d.officials.each do |o|
     puts o.name.to_s
     puts o.uri.to_s
     data = {
-        name: o.name.to_s
+        name: o.name.to_s,
         uri: o.uri.to_s
     }
     ScraperWiki::save_sqlite([], data)
